@@ -1,0 +1,82 @@
+<li id="post">
+    <div id="post-contents">
+    <p>
+        <div id="post-heading-container">
+            <div>
+                <%if(post.user.avatar){%>        <!--if user has its profile pic then show his own profile pic -->
+                    <span>
+                        <img src="<%= post.user.avatar %>" alt="Profile picture" id="profile">
+                    </span>
+                <%}else{%>                          <!--if user hasnt uploaded his profile pic then show default profile pic -->
+                    <span>
+                        <img src="https://getdrawings.com/img/facebook-profile-picture-silhouette-female-3.jpg" alt="Profile picture" id="profile">
+                    </span>
+                <% } %>
+            </div>
+            <div>
+                <div>
+                    <span id="post-username">
+                        <%= post.user.name %>             <!--name of the user who is posting a post -->
+                    </span>
+                </div>
+                <div>
+                    <span id="post-time">
+                        <%=post.createdAt.toDateString()%>                 <!--time of post creation-->
+                    </span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div id="post-content">
+                <%=post.content%>                               <!--show post content-->
+        </div>
+        <div class="like-and-delete">
+            <div class="like">
+                    <small>
+                        <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
+                            Like                             <!--Like post-->
+                        </a>
+                    </small>
+            </div>
+            <div class="delete">
+                <% if (locals.user && locals.user.id == post.user.id){ %>           <!--if the post is posted by the logged in user only then he can delete that post-->
+                    <small>
+                        <a class="delete-post-button"  href="/posts/destroy/<%= post.id %>">Delete</a>   <!--Delete post-->
+                    </small>
+                <% } %>
+            </div>    
+        </div>
+        <div class="post-likes-count">
+            <%= post.likes.length %> Likes            <!--show Likes count on the post-->
+        </div>
+        <br>
+        <div class="post-comments">
+            <div id="post-username">
+                Add Your Comments
+            </div>
+                
+                <form action="/comments/create" method="POST">
+                    <div class="form-group row">
+                        <div class="col">
+                          <textarea type="text" class="form-control" placeholder="Write a comment..." name="content"></textarea>
+                          <input type="hidden" name="post" value="<%= post._id %>" >
+                            <input type="submit" value="Add Comment" id="comment-button">      <!--add comments on post-->
+                        </div>
+                    </div> 
+                </form>
+            <div class="post-comments-list">
+                <ul id="post-comments">
+                    <% for (comment of post.comments){%>
+                        <%- include('_comment') -%>                  <!--show comments on post-->
+                    <%} %>
+                </ul>
+            </div>
+            
+        </div>
+        </div>
+        
+        <br>
+
+    </p>
+    
+</li>

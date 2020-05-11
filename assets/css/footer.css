@@ -1,0 +1,13 @@
+#layout-footer {
+   height:100px;
+   width:100%;
+    background-color: white;
+ }
+ .footer-content{
+    font-size:15px;
+    font-weight: 500;
+    color:rgb(61, 59, 59);
+    padding-left:150px;
+    padding-bottom: 0px;
+}
+  

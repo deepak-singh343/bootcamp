@@ -1,0 +1,50 @@
+<header id="layout-header">
+    <nav>
+        <div class="mini-logo">
+            <p>
+                <a href='/users/home'>
+                   Being Social
+                </a>
+            </p>
+        </div>
+    
+        <div class="auth-links">
+            <ul>
+                <% if (locals.user){ %>
+                    <%if(user.avatar){%>        <!--if user has its profile pic then show his own profile pic -->
+                        <span>
+                            <img src="<%= user.avatar %>" alt="Profile picture" id="profile">
+                        </span>
+                    <%}else{%>                          <!--if user hasnt uploaded his profile pic then show default profile pic -->
+                        <span>
+                            <img src="https://getdrawings.com/img/facebook-profile-picture-silhouette-female-3.jpg" alt="Profile picture" id="profile">
+                        </span>
+                    <% } %>
+                <li>
+                    <a href="/users/profile/<%= user._id%>"><%= user.name %></a>
+                </li>
+                <li>
+                    <button id="chat-button" onclick="show_hide()">
+                        <img src="https://image.flaticon.com/icons/svg/270/270794.svg" alt="chat" id="chat">
+                    </button>
+                    
+                </li>
+                <li>
+                    <a href="/users/sign-out">Sign Out</a>
+                </li>
+                <% }else{ %>
+                    <form action="/users/create-session" method="POST">
+                        <input type="email" name="email" placeholder="Email"  required>
+                        <input type="password" name="password" placeholder="Password"  required>
+                        <input type="submit" value="Sign In" id="login">
+                    
+                    </form>
+        
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+ 
+
+
+</header>

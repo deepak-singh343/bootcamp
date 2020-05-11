@@ -1,0 +1,82 @@
+<li id="post">
+    <div id="post-contents">
+    <p>
+        <div id="post-heading-container">
+            <div>
+                <%if(photo.user.avatar){%>        <!--if user has its profile pic then show his own profile pic -->
+                    <span>
+                        <img src="<%= photo.user.avatar %>" alt="Profile picture" id="profile">
+                    </span>
+                <%}else{%>                          <!--if user hasnt uploaded his profile pic then show default profile pic -->
+                    <span>
+                        <img src="https://getdrawings.com/img/facebook-profile-picture-silhouette-female-3.jpg" alt="Profile picture" id="profile">
+                    </span>
+                <% } %>
+            </div>
+            <div>
+                <div>
+                    <span id="post-username">
+                        <%= photo.user.name %>             <!--name of the user who is uploading a photo -->
+                    </span>
+                </div>
+                <div>
+                    <span id="post-time">
+                        <%=photo.createdAt.toDateString()%>                 <!--time of photo uploading-->
+                    </span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div id="photo-content">
+            <img src="<%=photo.name%>" id="uploaded-photo">          <!--show uploaded photo-->
+        </div>
+        <div class="like-and-delete">
+            <div class="like">
+                    <small>
+                        <a class="toggle-like-button" data-likes="<%= photo.likes.length %>" href="/likes/toggle/?id=<%=photo._id%>&type=Photo">
+                            Like                             <!--Like photo-->
+                        </a>
+                    </small>
+            </div>
+            <div class="delete">
+                <% if (locals.user && locals.user.id == photo.user.id){ %>           <!--if the photo is uploaded by the logged in user then only he can delete that photo-->
+                    <small>
+                        <a class="delete-post-button"  href="/photos/destroy/<%= photo.id %>">Delete</a>   <!--Delete photo-->
+                    </small>
+                <% } %>
+            </div>    
+        </div>
+        <div class="post-likes-count">
+            <%= photo.likes.length %> Likes            <!--show Likes count on the uploaded photo-->
+        </div>
+        <br>
+        <div class="post-comments">
+            <div id="post-username">
+                Add Your Comments
+            </div>
+                
+                <form action="/comments/create" method="POST">
+                    <div class="form-group row">
+                        <div class="col">
+                          <textarea type="text" class="form-control" placeholder="Write a comment..." name="content" required></textarea>
+                          <input type="hidden" name="photo" value="<%= photo._id %>" >
+                            <input type="submit" value="Add Comment" id="comment-button">      <!--add comments-->
+                        </div>
+                    </div> 
+                </form>
+            <div class="post-comments-list">
+                <ul id="post-comments-<%= photo._id %>">
+                    <% for (comment of photo.comments){%>
+                        <%- include('_comment') -%>                  <!--show comments-->
+                    <%} %>
+                </ul>
+            </div>
+            
+        </div>
+        </div>
+        
+        <br>
+
+    </p>
+    
+</li>

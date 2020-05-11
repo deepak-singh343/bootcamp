@@ -1,0 +1,201 @@
+#home-container {
+    display: flex;
+    margin-top: 50px;
+ }
+
+ /* left-sidebar */
+ #left-sidebar{
+     width:30%;
+     border-right:1px solid black;
+     margin-left:30px;
+ }
+ /* main-container contains posts,photos,comments and suggested users */
+ #main{
+     display:flex;
+     width:70%; 
+ }
+ /* feed-posts contains posts,photos and comments */
+#feed-posts {
+    width: 65%;
+    padding: 10px;
+    border-right:1px solid black;
+ }
+ /* posts */
+ #post-heading-container{
+    display: flex;
+}
+.heading-container{
+    width:80%;
+    border:1px solid black;
+    margin-left:3%;
+    border-radius: 5px;
+    background-color: rgb(213, 225, 248);
+}
+#post-contents{
+    width:initial;
+    border:1px solid blue;
+    border-radius: 10px;
+}
+
+#post-username{
+    font-size: 18px;
+    font-weight: 700;
+}
+#post-time{
+    font-size:10px;
+}
+#post-content{
+    font-size:15px;
+    width:90%;
+    border:1px solid black;
+    background-color: rgb(248, 240, 233);
+    margin-left: 20px;
+    color:black;
+    height:100px;
+    border-radius:5px;
+}
+#post-button{
+    background:#29487d;
+    border: .2px solid rgb(40, 40, 109);
+    color: white;
+    padding: 2px 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left:40%;
+}
+#like{
+    width:50%;
+    /* border:1px solid black; */
+    padding-left:10%;
+}
+#delete{
+    width:50%;
+    /* border:1px solid yellow; */
+    padding-left:10%;
+
+}
+
+#post{
+    list-style: none;
+}
+.like-and-delete{
+    display: flex;
+}
+.like{
+    width:50%;
+    /* border:1px solid black; */
+    padding-left:25%;
+}
+.delete{
+    width:50%;
+    /* border:1px solid yellow; */
+    padding-left:20%;
+
+}
+.likes-count{
+    margin-left:15%;
+    font-size:15px;
+    color:grey;
+}
+.post-likes-count{
+    margin-left:5%;
+    font-size:15px;
+    color:grey;
+}
+
+/* photos */
+#photo-content{
+    font-size:15px;
+    width:90%;
+    background-color: royalblue;
+    margin-left: 20px;
+    color:white;
+    height:202px;
+    border-radius:5px;
+}
+#photo-container{
+    display: flex;
+}
+#uploaded-photo{
+    width:100%;
+    height:200px;
+}
+#photo{
+    list-style: none;
+}
+#photo-contents{
+    width:initial;
+    border:1px solid blue;
+    border-radius: 10px;
+}
+#photo-username{
+    font-size: 18px;
+    font-weight: 700;
+}
+#photo-time{
+    font-size:10px;
+}
+
+
+/* comments */
+#comments{
+    list-style: none;
+}
+#comment-button{
+    background:#29487d;
+    border: .2px solid rgb(40, 40, 109);
+    color: white;
+    padding: 2px 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left:40%;
+}
+#comment-container{
+    display: flex;
+}
+
+#comment-username{
+    font-size:15px;
+    font-weight: 800;;
+}
+#comment-time{
+    padding-left:70px;
+    width:50%;
+    font-size: 12px;;
+}
+
+/* right-sidebar contains suggested friends */
+ #right-sidebar{
+     margin-left:10px;
+    width:35%;
+}
+ .users{
+     display: flex;
+ }
+ .user-name{
+    width:35%;
+ }
+ .buttons{
+    width:65%;
+ }
+a:hover{
+    text-decoration: none;
+}
+.mybutton{
+    background:#3f82f5;
+    border: .2px solid rgb(40, 40, 109);
+    color: white;
+    padding: 2px 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+  

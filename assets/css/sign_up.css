@@ -1,0 +1,37 @@
+#sign-up{
+    display: flex;
+    background-color: rgb(237, 238, 245);
+}
+#logo{
+    width:60%;
+}
+#register{
+    width:30%;
+}
+#network-logo{
+    margin-top:50px;
+    margin-left:80px;
+}
+.label{
+    font-size:20px;
+    font-weight: 700;
+    color:grey;
+}
+.label1{
+    font-size:15px;
+    font-weight: 500;
+    color:grey;
+}
+.label2{
+    font-size:15px;
+    font-weight: 500;
+    color:rgb(61, 59, 59);
+}
+#submit{
+    background:#69a74e;
+    border: .2px solid rgb(36, 184, 48);
+    color: white;
+    padding: 10px 40px;
+    text-decoration: none;
+    cursor: pointer;
+  }
