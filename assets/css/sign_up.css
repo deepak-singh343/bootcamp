@@ -1,16 +1,18 @@
 #sign-up{
     display: flex;
-    background-color: rgb(237, 238, 245);
+    
 }
 #logo{
     width:60%;
 }
 #register{
+    margin-left:20px;
     width:30%;
 }
 #network-logo{
     margin-top:50px;
-    margin-left:80px;
+    padding-left:60px;
+    width:100%;
 }
 .label{
     font-size:20px;

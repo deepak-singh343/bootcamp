@@ -1,57 +1,75 @@
 <div id="sign-up">
-    <div id="logo">                 <!-- logo -->
-        <img src="https://i0.wp.com/www.euroscientist.com/wp-content/uploads/2019/06/cropped-social-media-3846597_1280-1.png?resize=672%2C372&ssl=1" alt="network-logo" id="network-logo"/>
+    <div id="logo">
+        <!-- logo -->
+        <img src="https://images.squarespace-cdn.com/content/v1/51e030c5e4b07aea08927ed5/1428979080630-8CFVHU1YLKWG44OC02Y5/ke17ZwdGBToddI8pDm48kDJ9qXzk7iAyoryvGQVNA_F7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0s1LK8gu64hle203mIYOUnrmUCsJc6tYXLWyYKXqJJREVLwxIf2S1_EV6nTFe6mmbg/Photo-Editing+Bootcamp+copy.jpg"
+            alt="logo" id="network-logo" />
     </div>
-    <div id="register">            <!-- registration form-->
-        <h1>Create Account</h1>         
+    <div id="register">
+        <!-- registration form-->
+        <h1>Create Account</h1>
         <form action="/users/create" method="POST">
             <div class="form-group row">
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="Your Name" name="name">      <!--name of registering user-->
+                    <input type="text" class="form-control" placeholder="Your Name" name="name">
+                    <!--name of registering user-->
                 </div>
             </div>
-            
+
             <div class="form-group row">
                 <div class="col">
-                    <input type="text" name="email" class="form-control" placeholder="Mobile or Email" required>   <!--Email or phone of registering user-->
-                </div>  
+                    <input type="email" name="email" class="form-control" placeholder="Your Email ID" required>
+                    <!--Email or phone of registering user-->
+                </div>
             </div>
             <div class="form-group row">
                 <div class="col">
-                    <input type="password" name="password" class="form-control" placeholder="Password" required>        <!--password of registering user-->
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    <!--password of registering user-->
                 </div>
                 <div class="col">
-                    <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
+                    <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password"
+                        required>
                 </div>
             </div>
+
             <div class="form-group row">
                 <div class="col-12">
-                    <label class="label">Your Birthday</label>
-                </div> 
-                <div class="col-7">
-                    <input type="date" name="dob" class="form-control" required>    <!--Date of birth of registering user-->
-                </div>  
-            </div>
-            <div class="form-group row">
-                <div class="col-12">
-                    <label class="label">Gender</label>          <!--gender of registering user-->
-                </div> 
+                    <label class="label">Gender</label>
+                    <!--gender of registering user-->
+                </div>
                 <div class="col-4">
                     &nbsp &nbsp &nbsp
                     <input type="radio" name="gender" class="form-check-input" value="female">
                     <label class="label1">Female</label>
-                </div>  
+                </div>
                 <div class="col">
                     <input type="radio" name="gender" class="form-check-input" value="male">
                     <label class="label1">Male</label>
-                </div>  
+                </div>
             </div>
-            <span class="label2">By clicking Sign Up, you agree to our Terms, Data Policy and Cookie Policy. 
+
+            <div class="form-group row">
+                <div class="col-12">
+                    <label class="label">Type</label>
+                    <!--gender of registering user-->
+                </div>
+                <div class="col-4">
+                    &nbsp &nbsp &nbsp
+                    <input type="radio" name="type" class="form-check-input" value="student">
+                    <label class="label1">Student</label>
+                </div>
+                <div class="col">
+                    <input type="radio" name="type" class="form-check-input" value="instructor">
+                    <label class="label1">Instructor</label>
+                </div>
+            </div>
+            <span class="label2">By clicking Sign Up, you agree to our Terms, Data Policy and Cookie Policy.
                 You may receive SMS notifications from us and can opt out at any time.</span>
-                <br>
-                <br>
-            <input type="submit" value="Sign Up" id="submit">     <!--Sign up button-->
-        
+            <br>
+            <br>
+            <input type="submit" value="Sign Up" id="submit">
+            <!--Sign up button-->
+
         </form>
         <br>
     </div>

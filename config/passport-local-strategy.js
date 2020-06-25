@@ -60,7 +60,7 @@ passport.checkAuthentication = function(req, res, next){
 
     // if the user is not signed in
     req.flash('error', 'Invalid Username or password');
-    return res.redirect('/users/sign-in');
+    return res.redirect('/users/sign-up');
 }
 
 passport.setAuthenticatedUser = function(req, res, next){

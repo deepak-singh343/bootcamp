@@ -8,34 +8,22 @@ const photoSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    name:{
-        type:String
+    name: {
+        type: String
     },
-    comments: [
-        {
-            type:  mongoose.Schema.Types.ObjectId,
-            ref: 'Comment'
-        }
-    ],
-    likes: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Like'
-        }
-    ]
-},{
+}, {
     timestamps: true
 });
 
 let storage1 = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, path.join(__dirname, '..', PHOTOS_PATH));
+        cb(null, path.join(__dirname, '..', PHOTOS_PATH));
     },
     filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now());
+        cb(null, file.fieldname + '-' + Date.now());
     }
-  });
-photoSchema.statics.uploadedPhoto1 = multer({storage:  storage1}).single('photos');
+});
+photoSchema.statics.uploadedPhoto1 = multer({ storage: storage1 }).single('photos');
 photoSchema.statics.PhotoPath = PHOTOS_PATH;
 const Photo = mongoose.model('Photos', photoSchema);
 module.exports = Photo;

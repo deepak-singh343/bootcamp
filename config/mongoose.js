@@ -1,17 +1,17 @@
 //requiring the mongoose library
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 
 //connecting to the database
-mongoose.connect('mongodb://localhost/being_social');
+mongoose.connect('mongodb://localhost/bootcamp', { useUnifiedTopology: true });
 
 //acquiring the connection
-const db=mongoose.connection;
+const db = mongoose.connection;
 
 //if error
-db.on('error',console.error.bind(console,'error connecting to db'));
+db.on('error', console.error.bind(console, 'error connecting to db'));
 
 //Running successfully
-db.once('open',function(){
+db.once('open', function () {
     console.log("Successfully connected to database");
 });
-module.exports=db;
+module.exports = db;

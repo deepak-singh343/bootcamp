@@ -5,8 +5,7 @@
 #layout-header nav {
     display: flex;
     justify-content: space-between;
-    /* padding: 0 10px; */
-    background: #29487d;
+    background: #43b4f5;
     color: white;
 }
     #layout-header nav .mini-logo p {
@@ -47,17 +46,5 @@
         margin-top:30px;
         padding:5px;
       }
-      #chat{
-        width:30px;
-        height:30px;
-        
-      }
-      #chat-button{
-        margin-right: 10px;
-        margin-left:10px;
-        border:none;
-        background-color:#29487d;
-        border:0;
-        outline:none;
-      }
+      
   
