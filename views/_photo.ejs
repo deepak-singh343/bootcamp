@@ -1,26 +1,28 @@
 <li id="photo">
-    <div id="photo-contents">
+    <div id="photo-container">
         <p>
-        <div id="photo-heading-container">
+        <div>
             <div>
-                <div>
-                    <span id="photo-username">
-                        <%= photo.user.name %>
-                        <!--name of the user who is uploading a photo -->
+                <% if (photo.user.type==="instructor"){ %>
+                    <span id="photo-details">
+                        Task details:
                     </span>
-                </div>
-                <div>
-                    <span id="photo-time">
-                        <%=photo.createdAt.toDateString()%>
-                        <!--time of photo uploading-->
-                    </span>
-                </div>
+                    <%= photo.details %>
+                    <!--Task Details -->
+                <% } %>
             </div>
-        </div>
-        <br>
-        <div id="photo-content">
-            <img src="<%=photo.name%>" id="uploaded-photo">
-            <!--show uploaded photo-->
+            <br>
+            <div class="rating">
+                <%if(photo.rating){%>
+                    <span>Rating:</span><%=photo.rating%>/10  
+                     <!--Task Ratings -->
+                <%}%>
+            </div>
+            <br>
+            <div>
+                <img src="<%=photo.name%>" id="uploaded-photo">
+                <!--show uploaded photo-->
+            </div>
         </div>
         <br>
         <div class="delete">
@@ -32,5 +34,37 @@
             </small>
             <% } %>
         </div>
-
+        <br>
+        <div>
+            <span id="photo-username">
+                Uploaded By 
+                <%if(photo.user.type==="instructor"){%>
+                    Instructor
+                <%}else{%>
+                    Student
+                <%}%>: <%= photo.user.name %>
+                <!--name of the user who is uploading a photo -->
+            </span>
+        </div>
+        <div>
+            <span id="photo-time">
+                <%=photo.createdAt.toDateString()%>
+                <!--time of photo uploading-->
+            </span>
+        </div>
+        <br>
+        <div>
+            <% if (locals.user.type==="instructor"&&photo.user.type!="instructor"&&locals.user.name===photo.ratedBy||!photo.ratedBy&&locals.user.type==="instructor"&&photo.user.type!="instructor"){ %>
+                <!--if the instructor is logged in and photo is uploaded by the the student only then instructor can rate the uploaded task  -->
+                    <form action="/photos/rate/<%= photo.id %>/?rater=<%=locals.user.name%>" method="POST">
+                        <input type="number" id="rating-control"  name="rating" step="1" max="10" min="0" placeholder="1-10">
+                        <input type="submit" value="Rate" id="rate-btn">
+                    </form>
+                    
+            <% } %>
+            <% if (photo.user.type!="instructor"){%>
+            <span id="photo-username">Rated By Instructor: <%=photo.ratedBy%></span>
+            <% } %>
+        </div>
+        <br>
 </li>

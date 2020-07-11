@@ -11,6 +11,15 @@ const photoSchema = new mongoose.Schema({
     name: {
         type: String
     },
+    rating:{
+        type:Number
+    },
+    details:{
+        type:String
+    },
+    ratedBy:{
+        type:String
+    }
 }, {
     timestamps: true
 });

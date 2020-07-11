@@ -5,11 +5,11 @@ const passport = require('passport');
 
 const usersController = require('../controllers/users_controllers');
 
-router.post('/create', usersController.create);                              //route for adding a user
-router.get('/home', passport.checkAuthentication, usersController.home);                                  //route for homepage after logging in
+router.post('/create', usersController.create);                                     //route for adding a user
+router.get('/home', passport.checkAuthentication, usersController.home);           //route for homepage after logging in
 
 //use passport as a middleware to authenticate
-router.post('/create-session', passport.authenticate(                       //route for creating a session when a user logs in 
+router.post('/create-session', passport.authenticate(                 //route for creating a session when a user logs in 
     'local',
     { failureRedirect: '/users/sign_up' },
 ), usersController.createSession);

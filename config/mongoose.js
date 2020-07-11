@@ -2,8 +2,8 @@
 const mongoose = require('mongoose');
 
 //connecting to the database
-mongoose.connect('mongodb://localhost/bootcamp', { useUnifiedTopology: true });
-
+mongoose.connect('mongodb://localhost/bootcamp', { useUnifiedTopology: true ,useNewUrlParser: true });
+mongoose.set('useCreateIndex', true);
 //acquiring the connection
 const db = mongoose.connection;
 

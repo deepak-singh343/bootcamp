@@ -1,44 +1,84 @@
 <%if(locals.user){
     if(user.type==="instructor")
     {%>
-<div id="photo-form">
-    <!--upload photos -->
-    <form action="/photos/addphotos/<%=user.id%>" enctype="multipart/form-data" method="post">
-        <span>Upload Your Edited Photos</span>
-        <br><br>
-        <input type="file" name="photos" placeholder="Upload photos" />
-        <input type="submit" value="Upload" id="login">
-    </form>
-    <br>
-</div>
-<div>
-    <span id="heading">All Uploaded Images</span>
-    <% for(photo of photos){%>
-    <%- include('_photo') -%>
-    <%} %>
-</div>
-<%}
-else
-{%>
-<div id="photo-form">
-    <!--upload photos -->
-    <form action="/photos/addphotos/<%=user.id%>" enctype="multipart/form-data" method="post">
-        <span>Upload Your Edited Photos</span>
-        <br><br>
-        <input type="file" name="photos" placeholder="Upload photos" />
-        <input type="submit" value="Upload" id="login">
-    </form>
-    <br>
-</div>
-<div>
-    <span id="heading">Your Uploaded Images</span>
-    <% for(photo of photos){ 
-    if(locals.user.name==photo.user.name){%>
-    <%- include('_photo') -%>
+        <div id="main-heading-instructor">
+            <h1>Hello Instructor Upload tasks for students</h1>
+        </div>
+        <div id="photo-form">
+            <!--instructor uploads task -->
+            <form action="/photos/addphotos/<%=user.id%>" enctype="multipart/form-data" method="post">
+                <span>Upload Task</span>
+                <br><br>
+                <input type="file" name="photos" placeholder="Upload photos" />
+                <textarea class="text-area"  rows="3" cols="40" name="details" placeholder="Task details" required></textarea>
+                <input type="submit" value="Upload" id="login">
+            </form>
+            <br>
+        </div>
+        <div id="images-container">
+            <div id="left">
+                <span id="left-heading">Tasks</span>
+                <br>
+                <br>
+                <% for(photo of photos){
+                    if(locals.user.name==photo.user.name){%>
+                 <%- include('_photo') -%>              <!-- show tasks uploaded by instructor -->
+                <%}
+                } %>
+            </div>
+            <div id="right">
+                <span id="right-heading">Student's Uploaded Images </span>
+                <br>
+                <br>
+                <% for(photo of photos){
+                    if(photo.user.type==="student"){%>
+                <%- include('_photo') -%>                <!-- show completed task uploaded by all students -->
+                <%} 
+                } %>
+            </div>
+        </div>
     <%}
-} %>
-</div>
-
-<%}
-
+    else
+    {%>
+        <div id="main-heading-student">
+            <h1>Hello Student complete your tasks</h1>
+        </div>
+        <div id="right-block">
+            <div id="photo-form">
+                <!--student uploads the completed tasks  -->
+                <form action="/photos/addphotos/<%=user.id%>" enctype="multipart/form-data" method="post">
+                    <span>Upload Your Completed Tasks</span>
+                    <br><br>
+                    <input type="file" name="photos" placeholder="Upload photos" />
+                    <input type="submit" value="Upload" id="login">
+                </form>
+                <br>
+            </div>
+            <div id="images-container">
+                <div id="left">
+                    <span id="student-left-heading">Tasks Uploaded by Instructor</span>
+                    <br>
+                    <br>
+                    <% for(photo of photos)
+                    {
+                            if(photo.user.type==="instructor"){%>
+                                <%- include('_photo') -%>                <!-- show tasks uploaded by instructor -->
+                    <%}
+                    } %>
+                </div>
+                <div id="right">
+                    <span id="right-heading">Your Uploaded Images</span>
+                    <br>
+                    <br>
+                    <% for(photo of photos)
+                    { 
+                        if(locals.user.name==photo.user.name)
+                        {%>
+                            <%- include('_photo') -%>                 <!-- show completed tasks uploaded by logged in student -->
+                        <%}
+                    } %>
+                </div>
+            </div>
+        </div>
+    <%}
 }%>

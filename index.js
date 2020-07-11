@@ -16,6 +16,7 @@ const session = require('express-session');
 const passport = require('passport');
 //require passport-local-strategy
 const passportLocal = require('./config/passport-local-strategy');
+
 //require connect-mongo
 const MongoStore = require('connect-mongo')(session);
 
@@ -25,7 +26,7 @@ const customWare = require('./config/middleware');
 
 
 //use built-in middlewares
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:false}));
 app.use(cookieParser());
 app.use(express.static('./assets'));
 
@@ -57,9 +58,9 @@ app.use(session({
         mongooseConnection: db,
         autoRemove: 'disabled'
     },
-        function (err) {
-            console.log(err)
-        })
+    function (err) {
+        console.log(err)
+    })
 }));
 
 
