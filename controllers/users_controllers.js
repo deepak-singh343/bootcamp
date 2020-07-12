@@ -3,23 +3,31 @@ const Photo = require('../models/photos');
 
 module.exports.create = async function (req, res)                                  //creating a user
 {
-        if (req.body.password != req.body.confirm_password)             //if password do not match redirect back
-        {                    
-            req.flash('error', 'Passwords do not match');
-            return res.redirect('back');
+        try{
+                if (req.body.password != req.body.confirm_password)             //if password do not match redirect back
+                {                    
+                    req.flash('error', 'Passwords do not match');
+                    return res.redirect('back');
+                }
+                let user=await User.findOne({ email: req.body.email });          //find user by email
+                if (!user)                                                   //if user doesnt exist create the user
+                {
+                    let newUser=await User.create(req.body);
+                    req.flash('success', 'Account created, Please login to continue!');
+                    return res.redirect('back');
+                } 
+                else 
+                {                                                      //if user already has an account redirect him back
+                    req.flash('success', 'You already have an account, Please login to continue!');
+                    return res.redirect('back');
+                }
         }
-        let user=await User.findOne({ email: req.body.email });          //find user by email
-        if (!user)                                                   //if user doesnt exist create the user
+        catch (err) 
         {
-            let newUser=await User.create(req.body);
-            req.flash('success', 'Account created, Please login to continue!');
-            return res.redirect('back');
-        } 
-        else 
-        {                                                      //if user already has an account redirect him back
-            req.flash('success', 'You already have an account, Please login to continue!');
-            return res.redirect('back');
+                req.flash('error', err);
+                return;
         }
+        
 }
 
 module.exports.signUp = function (req, res)              //if someone hit url localhost/8000/users/sign_up
