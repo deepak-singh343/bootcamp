@@ -37,7 +37,7 @@ module.exports.signUp = function (req, res)              //if someone hit url lo
         return res.redirect('/users/home');                     //if user is logged in then redirect him to homepage
     }
     return res.render('sign_up', {
-        title: "Codeial | Sign Up"                              //else if user is not logged in then redirect him to signup page
+        title: "Bootcamp | Sign Up"                              //else if user is not logged in then redirect him to signup page
     })
 }
 
@@ -49,7 +49,7 @@ module.exports.signIn = function (req, res)                 //if someone hit url
         return res.redirect('/users/home');                     //if user is logged in then redirect him to homepage
     }
     return res.render('sign_up', {
-        title: "Codeial | Sign In",                             //else if user is not logged in then redirect him to signup page
+        title: "Bootcamp | Sign In",                             //else if user is not logged in then redirect him to signup page
     })
 }
 module.exports.createSession = function (req, res)              //create session
